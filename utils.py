@@ -17,7 +17,11 @@ def getStats(owner):
                 i+= 1      
         elif line not in [1,2,18,19] and row[1] != '':
             name = row[1].split(',')[0]
-            position = row[1].split('\xa0')[1]
+            position = ''
+            if (row[1].split('\xff')[0] == row[1]):
+                position = row[1].split('\xa0')[1]
+            else:
+                position = row[1].split('\xff')[1]
             points = row[pointscolumn]
             if line > 2 and line < 18:
                 curpoints += float(row[pointscolumn])
